@@ -1,0 +1,24 @@
+
+
+<div  [@moveToTop]="headerState" class="app_container">
+    <div (click)="moveHeaderToTop()">
+
+        <app-header ></app-header>
+        
+    </div>
+
+  
+    
+</div>
+
+
+
+  
+  <div class="fly-container">
+    <!-- <img [style.top.px]="topPosition" [style.left.px]="leftPosition" src="https://i.pinimg.com/1200x/84/cd/28/84cd28bf76d7aeede1584f57828fb3e9.jpg" class="flying-image" (animationiteration)="onAnimationIteration()"> -->
+    <img [style.top.px]="topPosition" [style.left.px]="leftPosition" src="https://img2.joyreactor.com/pics/post/full/picture-6834180.jpeg" class="flying-image" (animationiteration)="onAnimationIteration()">
+
+    <!-- <img [style.top.px]="topPosition" [style.left.px]="leftPosition" src="https://i.pinimg.com/1200x/84/cd/28/84cd28bf76d7aeede1584f57828fb3e9.jpg" class="flying-image" (animationiteration)="onAnimationIteration()"> -->
+  </div>
+  
+  
