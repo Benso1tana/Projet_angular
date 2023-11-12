@@ -1,0 +1,31 @@
+div {
+    position: relative; /* Position relative for absolute positioning of text */
+    overflow: hidden; /* Hide overflow for vignette effect */
+
+    text-align: center;
+  }
+  
+  img {
+
+    height: 180px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-out; /* Add a smooth transition effect for transform */
+  }
+  
+  div:hover img {
+    transform: scale(1.1); /* Increase scale on hover for a slight zoom effect */
+  }
+  
+  h3, p {
+    position: absolute; /* Position absolutely within the relative container */
+    top: 50%; /* Position at the vertical center of the container */
+    left: 50%; /* Position at the horizontal center of the container */
+    transform: translate(-50%, -50%); /* Center the text */
+    color: #fff; /* Set text color to white */
+    opacity: 0; /* Initially hide the text */
+    transition: opacity 0.3s ease-in-out; /* Add a smooth transition effect for opacity */
+  }
+  
+  div:hover h3, div:hover p {
+    opacity: 1; /* Show the text on hover */
+  }

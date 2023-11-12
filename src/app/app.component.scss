@@ -1,10 +1,14 @@
+
+.maintainer{
+  display: flex;
+  
+}
 .app_container {
   display: flex;
   flex-direction: column; /* Ensure flex items are stacked vertically */
   align-items: center; /* Align items in the center horizontally */
   justify-content: center; /* Align items at the top of the container */
   min-height: 100vh;
-  background-color: rgb(160, 160, 160);
   overflow: hidden;
   }
 
@@ -16,7 +20,7 @@
   
   .flying-image {
     position: absolute;
-    /* Your other styling */
+  
     animation: flyAnimation 3s linear infinite;
     animation-fill-mode: forwards;
 
@@ -51,3 +55,9 @@
     animation: flyAnimation 3s linear 0s infinite, delayAnimation 1s linear 2s infinite;
   }
   
+
+  .header-container{
+    display: flex;
+    align-items: center;
+    }
+    

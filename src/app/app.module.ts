@@ -7,13 +7,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './components/header/header.component';
 import { MatIconModule } from '@angular/material/icon'; 
+import { FormsModule } from '@angular/forms';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { ImageComponent } from './components/image/image.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    GalleryComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule 
+    MatIconModule ,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
