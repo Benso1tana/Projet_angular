@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { getPhotoDetails } from 'src/app/flickrAPI';
 
 @Component({
   selector: 'app-image',
@@ -15,4 +16,13 @@ export class ImageComponent {
     title: '',
     description: ''
   };
+
+
+
+  print(){
+    alert(this.image.src) ;
+    getPhotoDetails("5227554690") ; 
+  }
 }
+
+

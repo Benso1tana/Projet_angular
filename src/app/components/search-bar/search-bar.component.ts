@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { flickrSearch } from 'src/app/flickrAPI';
+import { Options } from 'src/app/modules/modules';
 
 @Component({
   selector: 'app-search-bar',
@@ -26,7 +27,16 @@ export class SearchBarComponent {
   }>>();
 
   onSearch() {
-    flickrSearch(this.searchVal)
+
+    const myOptions : Options  = {
+      size: 'large',
+      color: 'black',
+      orientation: 'portrait',
+      minDate: undefined,
+      maxDate: undefined,
+      safe_search : '1'
+    };
+    flickrSearch(this.searchVal, myOptions)
       .then((res) => {
         // Emit the 'searchData' event with the resolved value
         this.searchData.emit(res);
@@ -39,8 +49,16 @@ export class SearchBarComponent {
   toggleSearchBarPosition() {
     this.isSearchBarAtTop = !this.isSearchBarAtTop;
     console.log("hey");
+    const myOptions : Options  = {
+      size: 'small',
+      color: 'black',
+      orientation: 'landscape',
+      minDate: undefined,
+      maxDate: undefined,
+      safe_search : '1'
+    };
 
-    flickrSearch(this.searchVal)
+    flickrSearch(this.searchVal, myOptions)
     .then((res) => {
       console.log('Received search data:', res);
      this.onSearch()
