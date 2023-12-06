@@ -33,17 +33,19 @@ export class AppComponent {
     src: string;
     title: string;
     description: string;
+    id: string ; 
   }> = []
 
   onSearchData(searchData: Array<{
     src: string;
     title: string;
     description: string;
+    id : string ; 
   }>) {
-    // Update the searchData property
+  
     this.searchData = searchData;
 
-    // Now you can use this.searchData in your component
+    
     console.log('Received search data in AppComponent:', this.searchData);
   }
 

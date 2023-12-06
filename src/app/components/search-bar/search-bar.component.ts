@@ -20,10 +20,12 @@ export class SearchBarComponent {
     src: string;
     title: string;
     description: string;
+    id : string;
   }>> = new EventEmitter<Array<{
     src: string;
     title: string;
     description: string;
+    id : string  ; 
   }>>();
 
   onSearch() {
@@ -31,7 +33,7 @@ export class SearchBarComponent {
     const myOptions : Options  = {
       size: 'large',
       color: 'black',
-      orientation: 'portrait',
+      orientation: undefined,
       minDate: undefined,
       maxDate: undefined,
       safe_search : '1'

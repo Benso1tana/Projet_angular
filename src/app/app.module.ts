@@ -11,13 +11,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { ImageComponent } from './components/image/image.component';
+import { ImageDetailsDialogComponent } from './image-details-dialog/image-details-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     GalleryComponent,
-    ImageComponent
+    ImageComponent,
+    ImageDetailsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { ImageComponent } from './components/image/image.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule ,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

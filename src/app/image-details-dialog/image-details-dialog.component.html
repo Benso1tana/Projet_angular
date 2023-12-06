@@ -1,0 +1,39 @@
+<!-- image-details-dialog.component.html -->
+<div *ngIf="data.details && data.image; else loading"  class="image-details-dialog"  >
+    <div>
+    <h2>{{ data.image.title }}</h2>
+    <img [src]="data.image.src" alt="{{ data.image.title }}" />
+
+    <div class="comments-section" *ngIf="details.info.comments">
+        <h4>Comments</h4>
+        <ng-container *ngIf="details.info.comments._content !== '0'; else noComments">
+            <div></div>
+            <ul>
+                <li *ngFor="let comment of data.comments">
+                    {{ comment._content }}
+                </li>
+            </ul>
+        </ng-container>
+        <ng-template #noComments>
+            <p>Pas de commentaires</p>
+        </ng-template>
+    </div>
+
+    </div>
+
+    <div class="left-container">
+        <p>{{ data.image.description }}</p>
+
+    </div>
+
+   
+
+
+</div>
+
+
+
+
+<ng-template #loading>
+    <p>Loading...</p>
+</ng-template>

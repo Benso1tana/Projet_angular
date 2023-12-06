@@ -10,6 +10,7 @@ export class GalleryComponent {
     src: string;
     title: string;
     description: string;
+    id : string
   }> = [];
 
   ngOnChanges() {

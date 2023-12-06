@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { getPhotoDetails } from 'src/app/flickrAPI';
+import { ImageDetailsDialogComponent } from 'src/app/image-details-dialog/image-details-dialog.component';
 
 @Component({
   selector: 'app-image',
@@ -11,17 +13,34 @@ export class ImageComponent {
     src: string;
     title: string;
     description: string;
+    id : string ; 
   } = {
     src: '',
     title: '',
-    description: ''
+    description: '',
+    id: ''
   };
 
-
+  
+  constructor(public dialog: MatDialog) {}
+  seeMore() {
+    getPhotoDetails(this.image.id).then(details => {
+      this.dialog.open(ImageDetailsDialogComponent, {
+        data: {
+          details: details, 
+          image: this.image ,
+          comments: details.comments
+        }
+      });
+    }).catch(error => {
+      console.error('Error fetching photo details:', error);
+      
+    });
+  }
 
   print(){
     alert(this.image.src) ;
-    getPhotoDetails("5227554690") ; 
+    getPhotoDetails(this.image.id) ; 
   }
 }
 
