@@ -1,11 +1,52 @@
-<div
-  class="google-search-bar"
- 
->
-  <input type="text" placeholder="Search" class="custom-input" [(ngModel)]="searchVal" >
+<div class="google-search-bar">
+  <input type="text" placeholder="Search" class="custom-input" [(ngModel)]="searchVal">
   <button mat-icon-button (click)="toggleSearchBarPosition()">
     <mat-icon>search</mat-icon>
   </button>
-</div>
 
+  <div class="filter-container">
+
+    <label>Min date:</label>
+    <input type="date" [(ngModel)]="filters.minDate">
+
+    <!-- Sélecteur pour la date maximale de prise de photo -->
+    <label>Max date:</label>
+    <input type="date" [(ngModel)]="filters.maxDate">
+
+    <!-- Sélecteur pour la couleur -->
+    <select [(ngModel)]="filters.color">
+      <option value="">Color</option>
+      <option value="red">Red</option>
+      <option value="green">Green</option>
+      <option value="blue">Blue</option>
+      <option value="yellow">Yellow</option>
+      <option value="purple">Purple</option>
+      <option value="white">White</option>
+      <option value="black">Black</option>
+      <option value="gray">Gray</option>
+      <option value="orange">Orange</option>
+      <option value="pink">Pink</option>
+      <option value="brown">Brown</option>
+      <option value="cyan">Cyan</option>
+    </select>
+    
   
+    <!-- Sélecteur pour l'orientation -->
+    <select [(ngModel)]="filters.orientation">
+      <option value="">Orientation</option>
+      <option value="landscape">Landscape</option>
+      <option value="portrait">Portrait</option>
+    </select>    
+  
+    <!-- Sélecteur pour la recherche sécurisée -->
+    <select [(ngModel)]="filters.safe_search">
+      <option value="">Safe Search</option>
+      <option value="1">Unsafe</option>
+      <option value="2">Moderate</option>
+      <option value="3">Safe</option>
+    </select>
+    
+
+    <!-- Ajoutez des sélecteurs pour les autres filtres ici selon le même modèle -->
+  </div>  
+</div>

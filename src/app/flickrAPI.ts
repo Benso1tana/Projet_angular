@@ -6,33 +6,37 @@ const apiKey = "e18ffc8adf733c47e41d9b3bee5ed4d5" ;
 export function flickrSearch(query: string, options?:Options) {
   // Vérifiez les valeurs des paramètres
   let url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e18ffc8adf733c47e41d9b3bee5ed4d5&format=json&nojsoncallback=1&text=" + query;
+  url += `&tag_mode=any`;
+  url += `&tags=` + query;
   if (options) {
     if (options.size) {
       url += "&size=" + options.size;
     }
     if (options.color) {
-      url += "&color=" + options.color;
+      // Assurez-vous que la couleur est encodée correctement pour une URL
+      url += `&tags=` + query + `${encodeURIComponent(options.color)}`;
     }
     if (options.orientation) {
       url += "&orientation=" + options.orientation;
     }
+
     if (options.safe_search) {
-      url += "&safe_search=" + options.safe_search;
+      const safeSearchValue = ['1', '2', '3'].includes(options.safe_search) ? options.safe_search : '3';
+      url += `&safe_search=${encodeURIComponent(safeSearchValue)}`;
+    } else {
+      url += `&safe_search=${encodeURIComponent('3')}`; // Utilisation du mode sûr par défaut
     }
 
     if (options.minDate) {
-      const minDateString = options.minDate.toISOString();
-      url += "&min_taken_date=" + minDateString;
+      const minUnixTime = Math.floor(new Date(options.minDate).getTime() / 1000);
+      url += `&min_taken_date=${minUnixTime}`;
     }
     if (options.maxDate) {
-      const maxDateString = options.maxDate.toISOString();
-      url += "&max_taken_date=" + maxDateString;
+      const maxUnixTime = Math.floor(new Date(options.maxDate).getTime() / 1000);
+      url += `&max_taken_date=${maxUnixTime}`;
     }
   }
  
-   
-  
-
   // Envoyez la requête
   return axios.get(url).then((response) => {
     if (response.status === 200) {
