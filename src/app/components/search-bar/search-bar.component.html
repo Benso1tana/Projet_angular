@@ -1,7 +1,7 @@
 <div class="google-search-bar">
 
   <div class="searchContainer"> 
-    <input type="text" placeholder="Search" class="custom-input" [(ngModel)]="searchVal">
+    <input (keyup.enter)="toggleSearchBarPosition()" type="text" placeholder="Search" class="custom-input" [(ngModel)]="searchVal">
     <button mat-icon-button (click)="toggleSearchBarPosition()">
       <mat-icon>search</mat-icon>
     </button>
