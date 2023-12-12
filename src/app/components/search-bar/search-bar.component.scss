@@ -15,14 +15,14 @@
   display: flex;
 }
 .custom-input {
-  border: none; /* Remove the default border */
-  outline: none; /* Remove the default outline */
-  padding: 0; /* Reset padding */
-  margin: 0; /* Reset margin */
+  border: none; 
+  outline: none;
+  padding: 0; 
+  margin: 0; 
   flex-grow: 1;
-  background-color: transparent; /* Transparent background */
-  font-size: 16px; /* Adjust font size */
-  width: 100%; /* Fill available space */
+  background-color: transparent;
+  font-size: 16px;
+  width: 100%; 
 }
 
 .google-search-bar button {
@@ -55,23 +55,23 @@
 
 
 .small-datepicker {
-  width: 150px; /* Adjust the width as needed */
-  height: 70px; /* Adjust the height as needed */
+  width: 150px; 
+  height: 70px; 
    .mat-input-element {
-    font-size: 1px; /* Adjust as needed */
+    font-size: 1px; 
   }
 }
 body .horizontal-menu .mat-menu-content {
   display: flex;
   flex-direction: row;
-  /* other properties */
+  
 }
 
 
 ::ng-deep .mat-menu-content {
   display: flex;
   flex-direction: row;
-  /* other properties */
+  
 }
 
 .color-swatch {
