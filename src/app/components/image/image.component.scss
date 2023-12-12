@@ -1,6 +1,6 @@
 div {
-    position: relative; /* Position relative for absolute positioning of text */
-    overflow: hidden; /* Hide overflow for vignette effect */
+    position: relative;
+    overflow: hidden; 
 
     text-align: center;
   }
@@ -9,38 +9,62 @@ div {
 
     height: 220px;
     border-radius: 8px;
-    transition: transform 0.3s ease-out; /* Add a smooth transition effect for transform */
+    transition: transform 0.3s ease-out; 
   }
   
   div:hover img {
-    transform: scale(1.1); /* Increase scale on hover for a slight zoom effect */
+    transform: scale(1.1); 
   }
   
   h3, p {
-    position: absolute; /* Position absolutely within the relative container */
-    top: 50%; /* Position at the vertical center of the container */
-    left: 50%; /* Position at the horizontal center of the container */
-    transform: translate(-50%, -50%); /* Center the text */
-    color: #fff; /* Set text color to white */
-    opacity: 0; /* Initially hide the text */
-    transition: opacity 0.3s ; /* Add a smooth transition effect for opacity */
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    color: #fff; 
+    opacity: 0; 
+    transition: opacity 0.3s ;
   }
   
   div:hover h3, div:hover p {
-    opacity: 1; /* Show the text on hover */
+    opacity: 1;
     
   }
   @keyframes growAnimation {
     from {
-      transform: scale(0); /* Start with no size (scaled to 0) */
+      transform: scale(0); 
     }
     to {
-      transform: scale(1); /* Grow to normal size (scaled to 1) */
+      transform: scale(1); 
     }
   }
   
   .image-container {
     overflow: hidden;
     animation: growAnimation 0.5s ease-in-out;
-    margin: 5px; /* Apply the animation to the container */
+    margin: 5px; 
+  }
+
+  .image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0); 
+    transition: background 0.2s ease-out; 
+   
+    z-index: 1; 
+  }
+  
+
+  .image-container:hover::before {
+    background: rgba(0, 0, 0, 0.5); 
+  }
+  
+
+  h3, p {
+    
+    z-index: 2;
   }

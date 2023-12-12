@@ -11,6 +11,9 @@
   transition: transform 800ms ease;
 }
 
+.searchContainer {
+  display: flex;
+}
 .custom-input {
   border: none; /* Remove the default border */
   outline: none; /* Remove the default outline */
@@ -30,8 +33,9 @@
 
 .filter-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 10px;
+  align-items: center;
 
   button {
     padding: 5px 10px;
@@ -46,4 +50,101 @@
     padding: 5px 10px;
     border-radius: 4px;
   }
+}
+
+
+
+.small-datepicker {
+  width: 150px; /* Adjust the width as needed */
+  height: 70px; /* Adjust the height as needed */
+   .mat-input-element {
+    font-size: 1px; /* Adjust as needed */
+  }
+}
+body .horizontal-menu .mat-menu-content {
+  display: flex;
+  flex-direction: row;
+  /* other properties */
+}
+
+
+::ng-deep .mat-menu-content {
+  display: flex;
+  flex-direction: row;
+  /* other properties */
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 14px; 
+  height: 14px; 
+  transform: translateY(2px);
+  margin-right: 8px; 
+  border: 0.5px solid #000; 
+}
+
+
+
+.filterIcon{
+  margin: 5px;
+  padding : 5px;
+  cursor: pointer; 
+}
+
+
+
+
+// date picker styles : 
+
+
+
+.date-picker-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff; 
+  max-width: 400px; 
+}
+
+.date-picker {
+  display: flex;
+  align-items: center;
+}
+
+.date-picker label {
+  margin-right: 5px;
+  font-size: 16px; 
+}
+
+.date-picker input[type="date"] {
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 16px; 
+  border-radius: 5px; 
+}
+
+
+.date-picker input[type="date"]::-webkit-datetime-edit-text,
+.date-picker input[type="date"]::-webkit-datetime-edit-month-field,
+.date-picker input[type="date"]::-webkit-datetime-edit-day-field,
+.date-picker input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #ccc; 
+}
+
+
+.date-picker input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+
+
+.date-picker input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+
+.date-picker input[type="date"]::-moz-focus-inner {
+  border: 0;
 }

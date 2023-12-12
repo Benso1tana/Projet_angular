@@ -50,7 +50,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    // this.generateRandomKeyframes();
+    
   }
 
   generateRandomKeyframes(): void {

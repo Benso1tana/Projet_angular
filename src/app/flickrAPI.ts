@@ -4,7 +4,7 @@ import { Options } from "./modules/modules";
 
 const apiKey = "e18ffc8adf733c47e41d9b3bee5ed4d5" ;
 export function flickrSearch(query: string, options?:Options) {
-  // Vérifiez les valeurs des paramètres
+
   let url = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e18ffc8adf733c47e41d9b3bee5ed4d5&format=json&nojsoncallback=1&text=" + query;
   url += `&tag_mode=any`;
   url += `&tags=` + query;
@@ -13,7 +13,7 @@ export function flickrSearch(query: string, options?:Options) {
       url += "&size=" + options.size;
     }
     if (options.color) {
-      // Assurez-vous que la couleur est encodée correctement pour une URL
+      
       url += `&tags=` + query + `${encodeURIComponent(options.color)}`;
     }
     if (options.orientation) {
@@ -40,7 +40,7 @@ export function flickrSearch(query: string, options?:Options) {
   // Envoyez la requête
   return axios.get(url).then((response) => {
     if (response.status === 200) {
-      // Créez une liste d'images
+      
       const images = [];
       for (const photo of response.data.photos.photo) {
         images.push({
@@ -51,7 +51,7 @@ export function flickrSearch(query: string, options?:Options) {
         });
       }
 
-      // Renvoyez la liste d'images
+     
       return images;
     } else {
       return [];
@@ -82,6 +82,6 @@ export function getPhotoDetails(photoId: string): Promise<any> {
     return details;
   }).catch(error => {
     console.error('Failed to fetch photo details', error);
-    return {}; // Return an empty object in case of error
+    return {}; 
   });
 }

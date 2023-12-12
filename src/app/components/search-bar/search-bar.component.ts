@@ -89,4 +89,18 @@ export class SearchBarComponent {
       console.error('Error fetching search data:', error);
     }); 
   }
+
+
+  // Menus functions 
+
+  selectOrientation(orientation: any) {
+    this.filters.orientation = orientation;
+  }
+  selectColor(color: any) {
+    this.filters.color = color;
+  }
+
+  setSafeSearch(value: any) {
+    this.filters.safe_search = value;
+  }
 }

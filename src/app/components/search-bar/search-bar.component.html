@@ -1,52 +1,119 @@
 <div class="google-search-bar">
-  <input type="text" placeholder="Search" class="custom-input" [(ngModel)]="searchVal">
-  <button mat-icon-button (click)="toggleSearchBarPosition()">
-    <mat-icon>search</mat-icon>
-  </button>
+
+  <div class="searchContainer"> 
+    <input type="text" placeholder="Search" class="custom-input" [(ngModel)]="searchVal">
+    <button mat-icon-button (click)="toggleSearchBarPosition()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  
 
   <div class="filter-container">
 
-    <label>Min date:</label>
-    <input type="date" [(ngModel)]="filters.minDate">
-
-    <!-- Sélecteur pour la date maximale de prise de photo -->
-    <label>Max date:</label>
-    <input type="date" [(ngModel)]="filters.maxDate">
-
-    <!-- Sélecteur pour la couleur -->
-    <select [(ngModel)]="filters.color">
-      <option value="">Color</option>
-      <option value="red">Red</option>
-      <option value="green">Green</option>
-      <option value="blue">Blue</option>
-      <option value="yellow">Yellow</option>
-      <option value="purple">Purple</option>
-      <option value="white">White</option>
-      <option value="black">Black</option>
-      <option value="gray">Gray</option>
-      <option value="orange">Orange</option>
-      <option value="pink">Pink</option>
-      <option value="brown">Brown</option>
-      <option value="cyan">Cyan</option>
-    </select>
+    <div class="date-picker-container">
+      <div class="date-picker">
+        <label for="minDate">De</label>
+        <input type="date" id="minDate" [(ngModel)]="filters.minDate" placeholder="DD-MM-YYYY">
+      </div>
     
-  
-    <!-- Sélecteur pour l'orientation -->
-    <select [(ngModel)]="filters.orientation">
-      <option value="">Orientation</option>
-      <option value="landscape">Landscape</option>
-      <option value="portrait">Portrait</option>
-    </select>    
-  
-    <!-- Sélecteur pour la recherche sécurisée -->
-    <select [(ngModel)]="filters.safe_search">
-      <option value="">Safe Search</option>
-      <option value="1">Unsafe</option>
-      <option value="2">Moderate</option>
-      <option value="3">Safe</option>
-    </select>
+      <div class="date-picker">
+        <label for="maxDate">À</label>
+        <input type="date" id="maxDate" [(ngModel)]="filters.maxDate" placeholder="DD-MM-YYYY">
+      </div>
+    </div>
+    
     
 
-    <!-- Ajoutez des sélecteurs pour les autres filtres ici selon le même modèle -->
+<div  class="filterIcon">
+  <mat-icon [matMenuTriggerFor]="menu" [ngStyle]="{'color': filters.color}" class="colors-btn">
+    {{ filters.color ? 'invert_colors' : 'color_lens' }}
+  </mat-icon>
+
+  <mat-menu #menu="matMenu" class="color-menu">
+    <button mat-menu-item (click)="selectColor('')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'white'}"></span> None
+    </button>
+    <button mat-menu-item (click)="selectColor('red')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'red'}"></span> Red
+    </button>
+    <button mat-menu-item (click)="selectColor('green')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'green'}"></span> Green
+    </button>
+    <button mat-menu-item (click)="selectColor('blue')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'blue'}"></span> Blue
+    </button>
+    <button mat-menu-item (click)="selectColor('yellow')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'yellow'}"></span> Yellow
+    </button>
+    <button mat-menu-item (click)="selectColor('purple')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'purple'}"></span> Purple
+    </button>
+    <button mat-menu-item (click)="selectColor('white')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'white'}"></span> White
+    </button>
+    <button mat-menu-item (click)="selectColor('black')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'black'}"></span> Black
+    </button>
+    <button mat-menu-item (click)="selectColor('gray')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'gray'}"></span> Gray
+    </button>
+    <button mat-menu-item (click)="selectColor('orange')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'orange'}"></span> Orange
+    </button>
+    <button mat-menu-item (click)="selectColor('pink')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'pink'}"></span> Pink
+    </button>
+    <button mat-menu-item (click)="selectColor('brown')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'brown'}"></span> Brown
+    </button>
+    <button mat-menu-item (click)="selectColor('cyan')">
+      <span class="color-swatch" [ngStyle]="{'background-color': 'cyan'}"></span> Cyan
+    </button>
+  </mat-menu>
+</div>
+  
+    
+    <div class="filterIcon">
+      <mat-icon [matMenuTriggerFor]="orientationMenu" *ngIf="filters.orientation === 'landscape'">crop_landscape</mat-icon>
+      <mat-icon [matMenuTriggerFor]="orientationMenu" *ngIf="filters.orientation === 'portrait'">crop_portrait</mat-icon>
+      <mat-icon [matMenuTriggerFor]="orientationMenu" *ngIf="!filters.orientation || (filters.orientation !== 'landscape' && filters.orientation !== 'portrait')">aspect_ratio</mat-icon>
+   
+  
+  
+  
+      <mat-menu #orientationMenu="matMenu">
+        <button mat-menu-item (click)="selectOrientation('landscape')">
+          <mat-icon>aspect_ratio</mat-icon>Both
+        </button> 
+        <button mat-menu-item (click)="selectOrientation('landscape')">
+          <mat-icon>crop_landscape</mat-icon>Landscape
+        </button> 
+        <button mat-menu-item (click)="selectOrientation('portrait')">
+          <mat-icon>crop_portrait</mat-icon>Portrait
+        </button>
+      </mat-menu>
+
+    </div>
+  
+ 
+    
+      <div  class="filterIcon">
+        <mat-icon [matMenuTriggerFor]="safeSearchMenu" *ngIf="filters.safe_search === '1'">visibility</mat-icon>
+        <mat-icon [matMenuTriggerFor]="safeSearchMenu" *ngIf="filters.safe_search === '2'">warning</mat-icon>
+        <mat-icon [matMenuTriggerFor]="safeSearchMenu" *ngIf="filters.safe_search === '3'">visibility_off</mat-icon>
+        <mat-icon [matMenuTriggerFor]="safeSearchMenu" *ngIf="!filters.safe_search || (filters.safe_search !== '1' && filters.safe_search !== '2' && filters.safe_search !== '3')">visibility</mat-icon>
+        
+        <mat-menu #safeSearchMenu="matMenu">
+          <button mat-menu-item (click)="setSafeSearch('1')">Unsafe</button>
+          <button mat-menu-item (click)="setSafeSearch('2')">Moderate</button>
+          <button mat-menu-item (click)="setSafeSearch('3')">Safe</button>
+        </mat-menu>
+        
+
+      </div>
+  
+   
+
+   
   </div>  
 </div>

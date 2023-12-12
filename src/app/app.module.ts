@@ -14,6 +14,10 @@ import { ImageComponent } from './components/image/image.component';
 import { ImageDetailsDialogComponent } from './image-details-dialog/image-details-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule ,
     FormsModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
